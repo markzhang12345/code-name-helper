@@ -64,7 +64,7 @@ Code Name Helper 是一款智能的 VS Code 扩展，根据您选中的代码片
 
 ## 已知问题
 
-当前版本暂无已知问题。如果您遇到任何 bug，欢迎在 [GitHub Issues](https://github.commarkzhang12345/code-name-helper/issues) 中提出。
+当前版本暂无已知问题。如果您遇到任何 bug，欢迎在 [GitHub Issues](https://github.com/markzhang12345/code-name-helper/issues) 中提出。
 
 ## 发布日志
 
