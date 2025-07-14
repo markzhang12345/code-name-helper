@@ -1,0 +1,94 @@
+{
+  "name": "code-name-helper",
+  "displayName": "Code Name Helper",
+  "description": "An intelligent VS Code extension for generating variable names and function names",
+  "version": "1.0.0",
+  "publisher": "kpmark",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markzhang12345/code-name-helper.git"
+  },
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "code-name-helper.generateName",
+        "title": "GenerateName",
+        "category": "Code Name Helper"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "code-name-helper.generateName",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "editorTextFocus && editorHasSelection"
+      }
+    ],
+    "configuration": {
+      "title": "code-name-helper",
+      "properties": {
+        "code-name-helper.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API Key for AI service"
+        },
+        "code-name-helper.body": {
+          "type": "object",
+          "default": {
+            "model": "Qwen/Qwen3-8B",
+            "stream": false,
+            "max_tokens": 512,
+            "enable_thinking": false,
+            "thinking_budget": 4096,
+            "min_p": 0.05,
+            "temperature": 0.7,
+            "top_p": 0.7,
+            "top_k": 50,
+            "frequency_penalty": 0.5,
+            "n": 1,
+            "stop": []
+          },
+          "description": "Model to use for AI service"
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "code-name-helper.generateName",
+          "when": "editorHasSelection",
+          "group": "1_modification"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.102.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
